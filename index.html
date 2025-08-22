@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BharatEmail - India's Premier Email Platform</title>
+    <meta name="description" content="Secure, intelligent email platform built for India with quantum encryption, AI assistance, and cultural awareness.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Login Page -->
+    <div id="login-page" class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="logo">
+                    <div class="indian-flag-logo">
+                        <svg width="32" height="19" viewBox="0 0 32 19" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0" y="0" width="32" height="6" fill="#FF9933"/>
+                            <rect x="0" y="6" width="32" height="6" fill="#FFFFFF"/>
+                            <rect x="0" y="12" width="32" height="6" fill="#138808"/>
+                            <g transform="translate(16, 9.5)">
+                                <circle cx="0" cy="0" r="2.5" fill="none" stroke="#054187" stroke-width="0.3"/>
+                                <circle cx="0" cy="0" r="0.6" fill="#054187"/>
+                                <g stroke="#054187" stroke-width="0.2" fill="none">
+                                    <line x1="0" y1="-2.5" x2="0" y2="-0.6" transform="rotate(0)"/>
+                                    <line x1="0" y1="-2.5" x2="0" y2="-0.6" transform="rotate(30)"/>
+                                    <line x1="0" y1="-2.5" x2="0" y2="-0.6" transform="rotate(60)"/>
+                                    <line x1="0" y1="-2.5" x2="0" y2="-0.6" transform="rotate(90)"/>
+                                    <line x1="0" y1="-2.5" x2="0" y2="-0.6" transform="rotate(120)"/>
+                                    <line x1="0" y1="-2.5" x2="0" y2="-0.6" transform="rotate(150)"/>
+                                    <line x1="0" y1="-2.5" x2="0" y2="-0.6" transform="rotate(180)"/>
+                                    <line x1="0" y1="-2.5" x2="0" y2="-0.6" transform="rotate(210)"/>
+                                    <line x1="0" y1="-2.5" x2="0" y2="-0.6" transform="rotate(240)"/>
+                                    <line x1="0" y1="-2.5" x2="0" y2="-0.6" transform="rotate(270)"/>
+                                    <line x1="0" y1="-2.5" x2="0" y2="-0.6" transform="rotate(300)"/>
+                                    <line x1="0" y1="-2.5" x2="0" y2="-0.6" transform="rotate(330)"/>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                    <h2>Sign In to BharatEmail</h2>
+                </div>
+                <p>Welcome back! Enter your credentials to access your account.</p>
+            </div>
+
+            <form id="login-form" class="auth-form">
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="login-email" name="email" required placeholder="demo@bharatemail.in" value="demo@bharatemail.in">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control" id="login-password" name="password" required placeholder="demo123" value="demo123">
+                </div>
+                <div class="form-group">
+                    <label class="toggle">
+                        <input type="checkbox" name="remember" checked>
+                        <span class="slider"></span>
+                        Remember me for 30 days
+                    </label>
+                </div>
+
+                <!-- 2FA Code Input (hidden by default) -->
+                <div class="form-group hidden" id="tfa-group">
+                    <label class="form-label">Two-Factor Authentication Code</label>
+                    <input type="text" class="form-control" id="tfa-code" name="tfa_code" placeholder="Enter 6-digit code" maxlength="6">
+                    <small class="form-help">Enter the code from your authenticator app or SMS</small>
+                </div>
+
+                <button type="submit" class="btn btn--primary btn--full-width" id="login-submit">
+                    Sign In
+                </button>
+            </form>
+
+            <!-- Enterprise SSO Options -->
+            <div class="auth-divider">
+                <span>Enterprise Login</span>
+            </div>
+
+            <div class="sso-options">
+                <button class="btn btn--outline btn--full-width sso-btn" id="google-sso">
+                    <span class="sso-icon">🔍</span> Sign in with Google
+                </button>
+                <button class="btn btn--outline btn--full-width sso-btn" id="microsoft-sso">
+                    <span class="sso-icon">🟦</span> Sign in with Microsoft
+                </button>
+                <button class="btn btn--outline btn--full-width sso-btn" id="enterprise-sso">
+                    <span class="sso-icon">🏢</span> Enterprise SSO Login
+                </button>
+            </div>
+
+            <div class="auth-divider">
+                <span>Quick Actions</span>
+            </div>
+
+            <div class="login-options">
+                <button class="btn btn--outline btn--full-width" id="mobile-login">
+                    📱 Sign in with Mobile OTP
+                </button>
+                <button class="btn btn--outline btn--full-width" id="biometric-login">
+                    👆 Use Biometric Authentication
+                </button>
+            </div>
+
+            <div class="auth-footer">
+                <p>Don't have an account? <a href="#" id="create-account">Create one now</a></p>
+                <p><a href="#" id="forgot-password">Forgot your password?</a> • <a href="#" id="contact-support">Contact Support</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard App -->
+    <div id="app" class="app hidden">
+        <header class="app-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <div class="indian-flag-logo">
+                            <svg width="40" height="24" viewBox="0 0 40 24" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="0" y="0" width="40" height="8" fill="#FF9933"/>
+                                <rect x="0" y="8" width="40" height="8" fill="#FFFFFF"/>
+                                <rect x="0" y="16" width="40" height="8" fill="#138808"/>
+                                <g transform="translate(20, 12)">
+                                    <circle cx="0" cy="0" r="3.5" fill="none" stroke="#054187" stroke-width="0.4"/>
+                                    <circle cx="0" cy="0" r="0.8" fill="#054187"/>
+                                    <g stroke="#054187" stroke-width="0.3" fill="none">
+                                        <line x1="0" y1="-3.5" x2="0" y2="-0.8" transform="rotate(0)"/>
+                                        <line x1="0" y1="-3.5" x2="0" y2="-0.8" transform="rotate(30)"/>
+                                        <line x1="0" y1="-3.5" x2="0" y2="-0.8" transform="rotate(60)"/>
+                                        <line x1="0" y1="-3.5" x2="0" y2="-0.8" transform="rotate(90)"/>
+                                        <line x1="0" y1="-3.5" x2="0" y2="-0.8" transform="rotate(120)"/>
+                                        <line x1="0" y1="-3.5" x2="0" y2="-0.8" transform="rotate(150)"/>
+                                        <line x1="0" y1="-3.5" x2="0" y2="-0.8" transform="rotate(180)"/>
+                                        <line x1="0" y1="-3.5" x2="0" y2="-0.8" transform="rotate(210)"/>
+                                        <line x1="0" y1="-3.5" x2="0" y2="-0.8" transform="rotate(240)"/>
+                                        <line x1="0" y1="-3.5" x2="0" y2="-0.8" transform="rotate(270)"/>
+                                        <line x1="0" y1="-3.5" x2="0" y2="-0.8" transform="rotate(300)"/>
+                                        <line x1="0" y1="-3.5" x2="0" y2="-0.8" transform="rotate(330)"/>
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
+                        <span class="logo-text">BharatEmail</span>
+                    </div>
+                    <nav class="main-nav">
+                        <button class="nav-btn active" data-section="inbox">📧 Inbox</button>
+                        <button class="nav-btn" data-section="compose">✍️ Compose</button>
+                        <button class="nav-btn" data-section="sent">📤 Sent</button>
+                        <button class="nav-btn" data-section="settings">⚙️ Settings</button>
+                        <button class="nav-btn" id="help-support">🆘 Help & Support</button>
+                    </nav>
+                    <div class="user-section">
+                        <div class="user-info">
+                            <span class="user-name" id="user-name">Demo User</span>
+                            <span class="user-email" id="user-email">demo@bharatemail.in</span>
+                        </div>
+                        <div class="user-avatar" id="user-avatar">DU</div>
+                        <div class="user-dropdown">
+                            <button class="dropdown-btn" id="user-menu-btn">⋮</button>
+                            <div class="dropdown-menu hidden" id="user-menu">
+                                <a href="#" class="dropdown-item" id="profile-btn">👤 Profile</a>
+                                <a href="#" class="dropdown-item" id="security-btn">🔒 Security</a>
+                                <a href="#" class="dropdown-item" id="logout-btn">🚪 Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="app-main">
+            <div class="container">
+                <!-- Inbox Section -->
+                <section id="inbox-section" class="app-section active">
+                    <div class="section-header">
+                        <h2>Inbox</h2>
+                        <div class="section-actions">
+                            <button class="btn btn--outline" id="refresh-btn">🔄 Refresh</button>
+                            <button class="btn btn--outline" id="search-btn">🔍 Search</button>
+                        </div>
+                    </div>
+                    <div class="inbox-layout">
+                        <div class="email-list-container">
+                            <div class="email-list" id="email-list">
+                                <!-- Sample emails loaded here -->
+                            </div>
+                        </div>
+                        <div class="email-viewer-container">
+                            <div class="email-viewer" id="email-viewer">
+                                <div class="welcome-viewer">
+                                    <h3>Welcome to BharatEmail</h3>
+                                    <p>Select an email from your inbox to read it here.</p>
+                                    <div class="viewer-features">
+                                        <div class="feature">🔒 Quantum Encrypted</div>
+                                        <div class="feature">🤖 AI Powered</div>
+                                        <div class="feature">📱 Mobile Ready</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Compose Section -->
+                <section id="compose-section" class="app-section hidden">
+                    <div class="section-header">
+                        <h2>Compose Email</h2>
+                    </div>
+                    <div class="compose-container">
+                        <form id="compose-form" class="compose-form">
+                            <div class="form-group">
+                                <label class="form-label">To</label>
+                                <input type="email" class="form-control" name="to" required placeholder="recipient@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Subject</label>
+                                <input type="text" class="form-control" name="subject" required placeholder="Email subject">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Message</label>
+                                <textarea class="form-control" name="body" rows="12" required placeholder="Write your email here..."></textarea>
+                            </div>
+                            <div class="compose-actions">
+                                <button type="submit" class="btn btn--primary">📤 Send Email</button>
+                                <button type="button" class="btn btn--outline" id="save-draft">💾 Save Draft</button>
+                                <button type="button" class="btn btn--outline" id="ai-assist">🤖 AI Assist</button>
+                            </div>
+                        </form>
+                        
+                        <!-- Email Sending Explanation -->
+                        <div class="email-explanation card" id="email-explanation">
+                            <div class="card__body">
+                                <h3>📧 About Email Sending</h3>
+                                <p><strong>Current Limitation:</strong> This is a frontend-only demonstration. Emails don't actually reach external recipients like Gmail.</p>
+                                <h4>🛠️ To Enable Real Email Sending:</h4>
+                                <ol>
+                                    <li><strong>Backend Server Required:</strong> Set up a server with SMTP capabilities</li>
+                                    <li><strong>Email Service Providers:</strong> Use SendGrid, Mailgun, or Amazon SES</li>
+                                    <li><strong>SMTP Configuration:</strong> Configure proper email authentication</li>
+                                    <li><strong>Domain Verification:</strong> Verify your sending domain</li>
+                                </ol>
+                                <p><strong>Solution:</strong> Contact our team for professional deployment with real email capabilities!</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sent Section -->
+                <section id="sent-section" class="app-section hidden">
+                    <div class="section-header">
+                        <h2>Sent Emails</h2>
+                    </div>
+                    <div class="sent-list" id="sent-list">
+                        <div class="empty-state">
+                            <div class="empty-icon">📤</div>
+                            <h3>No sent emails</h3>
+                            <p>Emails you send will appear here</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Settings Section -->
+                <section id="settings-section" class="app-section hidden">
+                    <div class="section-header">
+                        <h2>Settings</h2>
+                    </div>
+                    <div class="settings-grid">
+                        <div class="settings-card">
+                            <h3>Account Information</h3>
+                            <div class="setting-group">
+                                <label class="form-label">Display Name</label>
+                                <input type="text" class="form-control" id="display-name" placeholder="Demo User" value="Demo User">
+                            </div>
+                            <div class="setting-group">
+                                <label class="form-label">Email Signature</label>
+                                <textarea class="form-control" id="email-signature" rows="3" placeholder="Best regards,&#10;Demo User">Best regards,
+Demo User</textarea>
+                            </div>
+                            <button class="btn btn--primary" id="save-settings">Save Changes</button>
+                        </div>
+                        <div class="settings-card">
+                            <h3>Security & Two-Factor Authentication</h3>
+                            <div class="setting-group">
+                                <label class="toggle">
+                                    <input type="checkbox" id="two-factor">
+                                    <span class="slider"></span>
+                                    Enable Two-Factor Authentication
+                                </label>
+                                <small class="form-help">Add an extra layer of security to your account</small>
+                            </div>
+                            
+                            <!-- 2FA Setup Panel -->
+                            <div class="tfa-setup hidden" id="tfa-setup">
+                                <h4>Set Up 2FA</h4>
+                                <div class="tfa-step" id="tfa-step-1">
+                                    <p><strong>Step 1:</strong> Scan this QR code with Google Authenticator or similar app:</p>
+                                    <div class="qr-code">
+                                        <div class="qr-placeholder">
+                                            <div class="qr-pattern"></div>
+                                            <p>QR Code for:<br>BharatEmail<br>demo@bharatemail.in</p>
+                                        </div>
+                                    </div>
+                                    <p><strong>Manual Setup Key:</strong> <code id="manual-key">JBSWY3DPEHPK3PXP</code></p>
+                                </div>
+                                
+                                <div class="tfa-step" id="tfa-step-2">
+                                    <p><strong>Step 2:</strong> Enter the 6-digit code from your authenticator app:</p>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="verify-tfa-code" placeholder="000000" maxlength="6">
+                                        <button class="btn btn--primary" id="verify-tfa-btn">Verify & Enable 2FA</button>
+                                    </div>
+                                </div>
+
+                                <div class="tfa-step hidden" id="tfa-step-3">
+                                    <h4>✅ 2FA Enabled Successfully!</h4>
+                                    <p><strong>Recovery Codes:</strong> Save these codes in a safe place:</p>
+                                    <div class="recovery-codes" id="recovery-codes">
+                                        <!-- Recovery codes generated here -->
+                                    </div>
+                                    <p><em>Each code can only be used once. Keep them safe!</em></p>
+                                </div>
+                            </div>
+
+                            <div class="setting-group">
+                                <label class="toggle">
+                                    <input type="checkbox" id="quantum-encryption" checked disabled>
+                                    <span class="slider"></span>
+                                    Quantum Encryption (Always On)
+                                </label>
+                            </div>
+                            <button class="btn btn--outline" id="change-password">Change Password</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- AI Support Chat Modal -->
+    <div class="modal hidden" id="ai-chat-modal">
+        <div class="modal-overlay" id="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🤖 BharatEmail Support Assistant</h3>
+                <button class="modal-close" id="close-chat">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="chat-container">
+                    <div class="chat-messages" id="chat-messages">
+                        <!-- Chat messages appear here -->
+                    </div>
+                    <div class="chat-input-area">
+                        <div class="quick-actions" id="quick-actions">
+                            <button class="quick-btn" data-action="email_help">📧 Email Help</button>
+                            <button class="quick-btn" data-action="2fa_help">🔒 2FA Setup</button>
+                            <button class="quick-btn" data-action="features">✨ Features</button>
+                            <button class="quick-btn" data-action="troubleshoot">🔧 Troubleshoot</button>
+                        </div>
+                        <div class="chat-input-group">
+                            <input type="text" class="form-control" id="chat-input" placeholder="Type your question here..." autocomplete="off">
+                            <button class="btn btn--primary" id="send-chat">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logout Confirmation Modal -->
+    <div class="modal hidden" id="logout-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🚪 Confirm Logout</h3>
+                <button class="modal-close" id="close-logout-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to logout from BharatEmail?</p>
+                <p><small>You'll need to re-enter your credentials to access your account again.</small></p>
+                <div class="modal-actions">
+                    <button class="btn btn--outline" id="cancel-logout">Cancel</button>
+                    <button class="btn btn--primary" id="confirm-logout">Yes, Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Messages -->
+    <div id="success-toast" class="success-toast hidden">
+        <div class="toast-content">
+            <span class="toast-icon">✅</span>
+            <span class="toast-message" id="success-message">Success message here</span>
+            <button class="toast-close" id="close-success">&times;</button>
+        </div>
+    </div>
+
+    <!-- Error Messages -->
+    <div id="error-toast" class="error-toast hidden">
+        <div class="toast-content">
+            <span class="toast-icon">⚠️</span>
+            <span class="toast-message" id="error-message">Error message here</span>
+            <button class="toast-close" id="close-error">&times;</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
