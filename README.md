@@ -45,7 +45,7 @@ Join the revolution! Fix bugs, add features, and help make BharatEmail world-cla
 1. **Clone the repository:**
 git clone https://github.com/AnonymousPro0/bharatemail.git
 
-text
+
 2. **Open `index.html` in your browser**
 3. **Try our demo:**  
 [BharatEmail Live Demo](https://anonymouspro0.github.io/Bharatemail/)
